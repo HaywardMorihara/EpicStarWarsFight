@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/art/red_particle.png" type="Texture" id=1]
+[ext_resource path="res://assets/art/yellow_particle.png" type="Texture" id=2]
+[ext_resource path="res://src/Level/LavaPlume.gd" type="Script" id=3]
+
+[sub_resource type="ParticlesMaterial" id=2]
+lifetime_randomness = 0.5
+emission_shape = 2
+emission_box_extents = Vector3( 10, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 10.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = -400.0
+initial_velocity_random = 0.9
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 0, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 30.0
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 200.0
+initial_velocity_random = 0.9
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="LavaPlume" type="Node2D" groups=["lava_plumes"]]
+position = Vector2( 256, 350 )
+script = ExtResource( 3 )
+
+[node name="LavaPlumeHigh" type="Particles2D" parent="."]
+z_index = -1
+emitting = false
+amount = 10000
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource( 2 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 2 )
+
+[node name="LavaPlumeLow" type="Particles2D" parent="."]
+z_index = -2
+emitting = false
+amount = 1000
+lifetime = 5.0
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource( 3 )
+texture = ExtResource( 1 )
