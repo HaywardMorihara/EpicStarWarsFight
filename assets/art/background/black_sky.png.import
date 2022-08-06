@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/background.png-a3ea5a620ba9fcb638e403ea9a11b249.stex"
+path="res://.import/black_sky.png-1dcc2fc3268db870d31d661b2d577b91.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/background/background.png"
-dest_files=[ "res://.import/background.png-a3ea5a620ba9fcb638e403ea9a11b249.stex" ]
+source_file="res://assets/art/background/black_sky.png"
+dest_files=[ "res://.import/black_sky.png-1dcc2fc3268db870d31d661b2d577b91.stex" ]
 
 [params]
 
