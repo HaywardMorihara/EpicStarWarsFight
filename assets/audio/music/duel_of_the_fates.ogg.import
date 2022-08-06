@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/duel_of_the_fates.ogg-9d892c1fd9b09baac5e3b3f050824a16.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/music/duel_of_the_fates.ogg"
+dest_files=[ "res://.import/duel_of_the_fates.ogg-9d892c1fd9b09baac5e3b3f050824a16.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
