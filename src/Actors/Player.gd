@@ -53,7 +53,7 @@ func _ready():
 func _physics_process(_delta):
 	# Play jump sound
 	if Input.is_action_just_pressed("jump" + action_suffix) and is_on_floor():
-		sound_jump.play()
+		$SwingSoundManager.play()
 
 	var direction = get_direction()
 

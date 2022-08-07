@@ -2,5 +2,6 @@ extends Node2D
 
 
 func restart():
-	$LavaPlumeHigh.restart()
-	$LavaPlumeLow.restart()
+	$LavaPlumeYellow.restart()
+	$LavaPlumeOrange.restart()
+	$LavaPlumeRed.restart()

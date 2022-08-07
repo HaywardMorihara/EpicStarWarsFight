@@ -1,21 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/art/background/mountains_front.png" type="Texture" id=1]
 [ext_resource path="res://assets/art/background/ridge.png" type="Texture" id=2]
 [ext_resource path="res://assets/art/background/mountains_back.png" type="Texture" id=3]
 [ext_resource path="res://assets/art/background/structures.png" type="Texture" id=4]
+[ext_resource path="res://src/Level/LavaPlume.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/Level/LavaPlumeManager.gd" type="Script" id=6]
 [ext_resource path="res://assets/art/background/gray_sky.png" type="Texture" id=7]
 [ext_resource path="res://assets/art/background/orange_sky.png" type="Texture" id=8]
 [ext_resource path="res://assets/art/background/black_sky.png" type="Texture" id=9]
+[ext_resource path="res://src/Level/ParallaxBackground.gd" type="Script" id=10]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 scroll_base_scale = Vector2( 0.4, 0 )
+script = ExtResource( 10 )
 
 [node name="OrangeSky" type="Sprite" parent="."]
 position = Vector2( 256, 144 )
+z_index = -1
 texture = ExtResource( 8 )
 
 [node name="GraySky" type="ParallaxLayer" parent="."]
+z_index = -1
 motion_scale = Vector2( 0.01, 1 )
 
 [node name="Sprite" type="Sprite" parent="GraySky"]
@@ -23,6 +29,7 @@ position = Vector2( 0, 144 )
 texture = ExtResource( 7 )
 
 [node name="BlackSky" type="ParallaxLayer" parent="."]
+z_index = -1
 motion_scale = Vector2( 0.01, 1 )
 
 [node name="Sprite" type="Sprite" parent="BlackSky"]
@@ -43,7 +50,39 @@ motion_scale = Vector2( 0.25, 1 )
 position = Vector2( 0, 144 )
 texture = ExtResource( 1 )
 
+[node name="LavaPlumeManager" type="Node2D" parent="." groups=["lava_plume_managers"]]
+position = Vector2( 0, 100 )
+scale = Vector2( 0.25, 0.25 )
+script = ExtResource( 6 )
+
+[node name="LavaPlume1" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+z_index = 2
+
+[node name="LavaPlume2" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+z_index = 2
+
+[node name="LavaPlume3" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+
+[node name="LavaPlume4" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+
+[node name="LavaPlume5" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+
+[node name="LavaPlume6" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+
+[node name="LavaPlume7" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+
+[node name="LavaPlume8" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+
+[node name="LavaPlume9" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+
+[node name="LavaPlume10" parent="LavaPlumeManager" instance=ExtResource( 5 )]
+
+[node name="Timer" type="Timer" parent="LavaPlumeManager"]
+wait_time = 2.0
+autostart = true
+
 [node name="Ridge" type="ParallaxLayer" parent="."]
+z_index = 1
 motion_scale = Vector2( 0.5, 1 )
 
 [node name="Sprite" type="Sprite" parent="Ridge"]
@@ -51,8 +90,11 @@ position = Vector2( 0, 144 )
 texture = ExtResource( 2 )
 
 [node name="Structures" type="ParallaxLayer" parent="."]
+z_index = 1
 motion_scale = Vector2( 0.75, 1 )
 
 [node name="Sprite" type="Sprite" parent="Structures"]
 position = Vector2( 0, 144 )
 texture = ExtResource( 4 )
+
+[connection signal="timeout" from="LavaPlumeManager/Timer" to="LavaPlumeManager" method="_on_Timer_timeout"]
