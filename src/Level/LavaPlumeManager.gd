@@ -21,7 +21,6 @@ func _on_Timer_timeout():
 	
 	var randx = rand_range(limit_left, limit_right)
 	var scale = rand_range(0.5, 2.0)
-	print(scale)
 	lava_plume.scale = Vector2(scale, scale)
 	lava_plume.position = Vector2(randx, lava_plume.position.y)
 	lava_plume.restart()

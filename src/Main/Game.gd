@@ -15,10 +15,26 @@ func _init():
 
 func _notification(what):
 	if what == NOTIFICATION_WM_QUIT_REQUEST:
+		pass
 		# We need to clean up a little bit first to avoid Viewport errors.
-		if name == "Splitscreen":
-			$Black/SplitContainer/ViewportContainer1.free()
-			$Black.queue_free()
+#		if name == "Splitscreen":
+#			$Black/SplitContainer/ViewportContainer1.free()
+#			$Black.queue_free()
+	if what == NOTIFICATION_PARENTED:
+		# Have to wait until the child is instanced before setting this
+		var width = $Level/Bounds/CollisionShape2D.shape.extents.x
+		var x = $Level/Bounds.get_position().x
+		$Level/Camera2D.limit_left = x - width
+		$Level/Camera2D.limit_right = x + width
+
+
+func _process(delta):
+	var p1pos = $Level/Player.position
+	var p2pos = $Level/Player2.position
+	var diff = p2pos - p1pos
+	var midvec = diff * Vector2(0.5, 0.5)
+	var midpoint = p1pos + midvec
+	$Level/Camera2D.position = midpoint
 
 
 func _unhandled_input(event):
@@ -39,12 +55,13 @@ func _unhandled_input(event):
 		get_tree().set_input_as_handled()
 
 	elif event.is_action_pressed("splitscreen"):
-		if name == "Splitscreen":
-			# We need to clean up a little bit first to avoid Viewport errors.
-			$Black/SplitContainer/ViewportContainer1.free()
-			$Black.queue_free()
-			# warning-ignore:return_value_discarded
-			get_tree().change_scene("res://src/Main/Game.tscn")
-		else:
-			# warning-ignore:return_value_discarded
-			get_tree().change_scene("res://src/Main/Splitscreen.tscn")
+		pass
+#		if name == "Splitscreen":
+#			# We need to clean up a little bit first to avoid Viewport errors.
+#			$Black/SplitContainer/ViewportContainer1.free()
+#			$Black.queue_free()
+#			# warning-ignore:return_value_discarded
+#			get_tree().change_scene("res://src/Main/Game.tscn")
+#		else:
+#			# warning-ignore:return_value_discarded
+#			get_tree().change_scene("res://src/Main/Splitscreen.tscn")

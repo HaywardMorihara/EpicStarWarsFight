@@ -13,6 +13,14 @@ script = ExtResource( 2 )
 
 [node name="Player" parent="Level" instance=ExtResource( 4 )]
 position = Vector2( 0, 167 )
+action_suffix = "_p1"
+
+[node name="Player2" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 0, 167 )
+action_suffix = "_p2"
+
+[node name="Camera2D" type="Camera2D" parent="Level"]
+current = true
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 layer = 100
